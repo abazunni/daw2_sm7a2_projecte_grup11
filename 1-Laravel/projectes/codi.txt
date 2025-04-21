@@ -1,0 +1,26 @@
+accessBD: sudo MySQL -u root -p
+
+
+# Connect to MySQL
+mysql -u administrador -p
+# Enter password: FjeClot24#
+
+# Select the database
+USE empresa;
+
+# Show tables
+SHOW TABLES;
+
+# Describe tables
+DESCRIBE editorials;
+DESCRIBE llibres;
+DESCRIBE users;
+
+# Check seeded users
+SELECT id, name, email, role FROM users;
+
+# Exit MySQL
+EXIT;
+
+For admin: [admin@clotfje.net](mailto:admin@clotfje.net) / ClotFje2425#
+For consultor: [consultor@clotfje.net](mailto:consultor@clotfje.net) / FjeClot2425@
