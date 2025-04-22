@@ -1,0 +1,73 @@
+/* Create this file at public/css/custom.css */
+:root {
+    --primary: #ffc107; /* Bootstrap's yellow */
+    --primary-dark: #e0a800; /* Darker yellow for hover states */
+    --primary-light: #ffecb5; /* Lighter yellow for backgrounds */
+  }
+  
+  .bg-primary {
+    background-color: var(--primary) !important;
+  }
+  
+  .text-primary {
+    color: var(--primary) !important;
+  }
+  
+  .btn-primary {
+    background-color: var(--primary) !important;
+    border-color: var(--primary) !important;
+  }
+  
+  .btn-primary:hover, .btn-primary:focus, .btn-primary:active {
+    background-color: var(--primary-dark) !important;
+    border-color: var(--primary-dark) !important;
+  }
+  
+  .btn-outline-primary {
+    color: var(--primary) !important;
+    border-color: var(--primary) !important;
+  }
+  
+  .btn-outline-primary:hover {
+    background-color: var(--primary) !important;
+    color: #fff !important;
+  }
+  
+  .card-header.bg-primary {
+    background-color: var(--primary) !important;
+  }
+  
+  .badge-primary {
+    background-color: var(--primary) !important;
+  }
+  
+  .alert-primary {
+    background-color: var(--primary-light) !important;
+    border-color: var(--primary) !important;
+    color: #856404 !important;
+  }
+  
+  /* Adjust text color for better contrast on yellow backgrounds */
+  .bg-primary, .btn-primary, .card-header.bg-primary {
+    color: #212529 !important; /* Dark text for better contrast on yellow */
+  }
+  
+  /* Navbar specific styles */
+  .navbar-dark.bg-primary {
+    background-color: var(--primary) !important;
+  }
+  
+  .navbar-dark.bg-primary .navbar-brand,
+  .navbar-dark.bg-primary .nav-link {
+    color: #212529 !important;
+  }
+  
+  .navbar-dark.bg-primary .nav-link:hover {
+    color: #000 !important;
+  }
+  
+  /* Dropdown menus */
+  .dropdown-item:active {
+    background-color: var(--primary) !important;
+    color: #212529 !important;
+  }
