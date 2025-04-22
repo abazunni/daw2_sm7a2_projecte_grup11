@@ -11,13 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('llibres', function (Blueprint $table) {
+        Schema::create('professors', function (Blueprint $table) {
             $table->id('identificador');
             $table->string('nom');
-            $table->string('autor');
-            $table->string('isbn')->unique();
-            $table->unsignedBigInteger('editorial');
-            $table->foreign('editorial')->references('identificador')->on('editorials')->onDelete('cascade');
+            $table->string('correu');
+            $table->string('adreca');
+            $table->string('ciutat');
+            $table->string('mobil');
+            $table->string('telefon');
+            $table->unsignedBigInteger('departament');
+            $table->foreign('departament')->references('identificador')->on('departaments')->onDelete('cascade');
             $table->timestamps();
         });
     }
@@ -27,6 +30,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('llibres');
+        Schema::dropIfExists('professors');
     }
 };

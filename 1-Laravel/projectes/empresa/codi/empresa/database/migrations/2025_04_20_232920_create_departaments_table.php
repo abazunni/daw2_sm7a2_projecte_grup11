@@ -11,8 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('llibres', function (Blueprint $table) {
-            $table->id();
+        Schema::create('departaments', function (Blueprint $table) {
+            $table->id('identificador');
+            $table->string('nom');
+            $table->string('localitzacio');
+            $table->string('director_departament');
             $table->timestamps();
         });
     }
@@ -22,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('llibres');
+        Schema::dropIfExists('departaments');
     }
 };

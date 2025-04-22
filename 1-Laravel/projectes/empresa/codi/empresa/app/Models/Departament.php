@@ -5,23 +5,21 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Editorial extends Model
+class Departament extends Model
 {
     use HasFactory;
     
-    protected $table = 'editorials';
+    protected $table = 'departaments';
     protected $primaryKey = 'identificador';
     
     protected $fillable = [
         'nom',
-        'nif_cif',
-        'contacte',
-        'telefon',
-        'email',
+        'localitzacio',
+        'director_departament',
     ];
     
-    public function llibres()
+    public function professors()
     {
-        return $this->hasMany(Llibre::class, 'editorial', 'identificador');
+        return $this->hasMany(Professor::class, 'departament', 'identificador');
     }
 }

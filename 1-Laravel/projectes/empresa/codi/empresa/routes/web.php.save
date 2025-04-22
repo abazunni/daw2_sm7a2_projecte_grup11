@@ -1,0 +1,56 @@
+<?php
+
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
+use App\Http\Controllers\DepartamentController;
+use App\Http\Controllers\ProfessorController;
+use App\Http\Controllers\UserController;
+
+// Public routes
+Route::get('/', function () {
+    return view('welcome');
+})->name('home');
+
+Route::get('/info', function () {
+    return view('info');
+})->name('info');
+
+// Authentication routes
+Route::get('/login', [AuthController::class, 'showLoginForm'])->name('login');
+Route::post('/login', [AuthController::class, 'login']);
+Route::post('/logout', [AuthController::class, 'logout'])->name('logout');
+
+// Protected routes
+Route::middleware(['auth'])->group(function () {
+    // Admin routes
+    Route::middleware(['admin'])->group(function () {
+        Route::get('/admin/dashboard', [AuthController::class, 'adminDashboard'])->name('admin.dashboard');
+        
+        // User management
+        Route::resource('users', UserController::class)->only(['index', 'create', 'store', 'destroy']);
+        
+        // Department management (full CRUD)
+        Route::resource('departaments', DepartamentController::class);
+        
+        // Professor management (full CRUD)
+        Route::resource('professors', ProfessorController::class);
+    });
+    
+    // Consultor routes
+    Route::get('/consultor/dashboard', [AuthController::class, 'consultorDashboard'])->name('consultor.dashboard');
+    
+    // Consultor can only view departments and professors
+    Route::get('/departaments', [DepartamentController::class, 'index'])->name('departaments.index');
+    Route::get('/departaments/{departament}', [DepartamentController::class, 'show'])->name('departaments.show');
+    
+    Route::get('/professors', [ProfessorController::class, 'index'])->name('professors.index');
+    Route::get('/professors/{professor}', [ProfessorController::class, 'show'])->name('professors.show');
+
+	// PDF routes
+    Route::middleware(['auth'])->group(function () {
+	Route::get('/pdf/departaments', [PdfController::class, 'departamentsList'])->name('pdf.departaments');
+	    Route::get('/pdf/departaments/{departament}', [PdfController::class, 'departamentDetail'])->name('pdf.departament.detail');
+	    Route::get('/pdf/professors', [PdfController::class, 'professorsList'])->name('pdf.professors');
+	    Route::get('/pdf/professors/{professor}', [PdfController::class, 'professorDetail'])->name('pdf.professor.detail');
+
+});
